@@ -21,12 +21,13 @@ class CityListState {
     List<City>? cities,
     String? error,
     City? selectedCity,
+    bool clearSelectedCity = false,
   }) {
     return CityListState(
       isLoading: isLoading ?? this.isLoading,
       cities: cities ?? this.cities,
       error: error,
-      selectedCity: selectedCity ?? this.selectedCity,
+      selectedCity: clearSelectedCity ? null : (selectedCity ?? this.selectedCity),
     );
   }
 }
@@ -49,6 +50,10 @@ class CityListNotifier extends StateNotifier<CityListState> {
   }
 
   void selectCity(City? city) {
-    state = state.copyWith(selectedCity: city);
+    if (city == null) {
+      state = state.copyWith(clearSelectedCity: true);
+    } else {
+      state = state.copyWith(selectedCity: city);
+    }
   }
 }

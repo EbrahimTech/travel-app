@@ -49,18 +49,52 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
     final placesContent = _buildPlacesContent(placeState);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('TurkTrip Places')),
+      backgroundColor: Colors.grey.shade50,
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: const Color(0xFF00AA6C), // TripAdvisor Green
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Text(
+                'TT',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              'TurkTrip',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
           cityFilters,
           Expanded(
-            child: RefreshIndicator(onRefresh: _reload, child: placesContent),
+            child: RefreshIndicator(
+              onRefresh: _reload,
+              color: const Color(0xFF00AA6C), // TripAdvisor Green
+              child: placesContent,
+            ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _reload,
-        child: const Icon(Icons.refresh),
+        backgroundColor: const Color(0xFF00AA6C), // TripAdvisor Green
+        child: const Icon(Icons.refresh, color: Colors.white),
       ),
     );
   }
@@ -82,17 +116,33 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
           if (index == 0) {
             final bool selected = cityState.selectedCity == null;
             return ChoiceChip(
+              key: const ValueKey('all_cities'),
               label: const Text('All'),
               selected: selected,
-              onSelected: (_) => _onCitySelected(null),
+              selectedColor: const Color(0xFF00AA6C), // TripAdvisor Green
+              labelStyle: TextStyle(
+                color: selected ? Colors.white : Colors.black87,
+                fontWeight: selected ? FontWeight.w600 : FontWeight.normal,
+              ),
+              onSelected: (_) {
+                _onCitySelected(null);
+              },
             );
           }
           final city = cityState.cities[index - 1];
           final bool selected = cityState.selectedCity?.id == city.id;
           return ChoiceChip(
+            key: ValueKey('city_${city.id}'),
             label: Text(city.name),
             selected: selected,
-            onSelected: (_) => _onCitySelected(city),
+            selectedColor: const Color(0xFF00AA6C), // TripAdvisor Green
+            labelStyle: TextStyle(
+              color: selected ? Colors.white : Colors.black87,
+              fontWeight: selected ? FontWeight.w600 : FontWeight.normal,
+            ),
+            onSelected: (_) {
+              _onCitySelected(city);
+            },
           );
         },
         separatorBuilder: (_, __) => const SizedBox(width: 8),
@@ -132,6 +182,11 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
                 onPressed: _reload,
                 icon: const Icon(Icons.refresh),
                 label: const Text('Retry'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF00AA6C), // TripAdvisor Green
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
               ),
             ],
           ),

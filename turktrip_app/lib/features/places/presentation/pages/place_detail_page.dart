@@ -17,6 +17,7 @@ class PlaceDetailPage extends StatelessWidget {
     ].whereType<String>().where((value) => value.isNotEmpty).toList();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Text(place.name)),
       body: SingleChildScrollView(
         child: Column(

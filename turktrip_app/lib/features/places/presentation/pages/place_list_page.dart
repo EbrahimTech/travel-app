@@ -49,7 +49,7 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
     final placesContent = _buildPlacesContent(placeState);
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Row(
           children: [
@@ -86,6 +86,7 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
             child: RefreshIndicator(
               onRefresh: _reload,
               color: const Color(0xFF00AA6C), // TripAdvisor Green
+              backgroundColor: Colors.white,
               child: placesContent,
             ),
           ),
@@ -120,6 +121,7 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
               label: const Text('All'),
               selected: selected,
               selectedColor: const Color(0xFF00AA6C), // TripAdvisor Green
+              backgroundColor: Colors.white,
               labelStyle: TextStyle(
                 color: selected ? Colors.white : Colors.black87,
                 fontWeight: selected ? FontWeight.w600 : FontWeight.normal,
@@ -136,6 +138,7 @@ class _PlaceListPageState extends ConsumerState<PlaceListPage> {
             label: Text(city.name),
             selected: selected,
             selectedColor: const Color(0xFF00AA6C), // TripAdvisor Green
+            backgroundColor: Colors.white,
             labelStyle: TextStyle(
               color: selected ? Colors.white : Colors.black87,
               fontWeight: selected ? FontWeight.w600 : FontWeight.normal,

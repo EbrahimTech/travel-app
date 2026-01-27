@@ -1,17 +1,17 @@
-# TurkTrip - Travel App
+# Tourism - Travel App
 
 تطبيق سفر لتركيا يتكون من Backend (Django REST Framework) و Frontend (Flutter).
 
 ## 🏗️ البنية
 
 ### Backend (Django)
-- **المشروع الرئيسي**: `turktrip_backend`
+- **المشروع الرئيسي**: `tourism_backend`
 - **التطبيقات**:
   - `accounts`: إدارة المستخدمين والملفات الشخصية
   - `places`: إدارة الأماكن والمدن والفئات والمراجعات والمنشورات
 
 ### Frontend (Flutter)
-- **المشروع**: `turktrip_app`
+- **المشروع**: `tourism_app`
 - **البنية**: Clean Architecture مع Riverpod لإدارة الحالة
 
 ## 🚀 البدء السريع
@@ -64,7 +64,7 @@ python manage.py runserver
 
 1. الانتقال إلى مجلد التطبيق:
 ```bash
-cd turktrip_app
+cd tourism_app
 ```
 
 2. تثبيت التبعيات:

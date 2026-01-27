@@ -8,6 +8,8 @@ User = get_user_model()
 
 class City(models.Model):
     name = models.CharField(max_length=100)
+    name_ar = models.CharField(max_length=100, blank=True)
+    name_en = models.CharField(max_length=100, blank=True)
     slug = models.SlugField(unique=True)
     country = models.CharField(max_length=100, default='Turkey')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -19,6 +21,8 @@ class City(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    name_ar = models.CharField(max_length=100, blank=True)
+    name_en = models.CharField(max_length=100, blank=True)
     slug = models.SlugField(unique=True)
     icon = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,6 +34,8 @@ class Category(models.Model):
 
 class Place(models.Model):
     name = models.CharField(max_length=200)
+    name_ar = models.CharField(max_length=200, blank=True)
+    name_en = models.CharField(max_length=200, blank=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='places')
     category = models.ForeignKey(
         Category,
@@ -38,7 +44,11 @@ class Place(models.Model):
         related_name='places',
     )
     description = models.TextField(blank=True)
+    description_ar = models.TextField(blank=True)
+    description_en = models.TextField(blank=True)
     address = models.CharField(max_length=255, blank=True)
+    address_ar = models.CharField(max_length=255, blank=True)
+    address_en = models.CharField(max_length=255, blank=True)
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     average_price_level = models.IntegerField(default=2)
@@ -97,7 +107,11 @@ class Post(models.Model):
         related_name='posts',
     )
     title = models.CharField(max_length=200)
+    title_ar = models.CharField(max_length=200, blank=True)
+    title_en = models.CharField(max_length=200, blank=True)
     content = models.TextField()
+    content_ar = models.TextField(blank=True)
+    content_en = models.TextField(blank=True)
     city = models.ForeignKey(
         City,
         on_delete=models.SET_NULL,

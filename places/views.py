@@ -47,7 +47,12 @@ class PlaceViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(category__slug=category_slug)
         if search:
             queryset = queryset.filter(
-                Q(name__icontains=search) | Q(description__icontains=search)
+                Q(name__icontains=search)
+                | Q(name_ar__icontains=search)
+                | Q(name_en__icontains=search)
+                | Q(description__icontains=search)
+                | Q(description_ar__icontains=search)
+                | Q(description_en__icontains=search)
             )
 
         return queryset

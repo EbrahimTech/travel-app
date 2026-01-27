@@ -1,6 +1,6 @@
 # Tourism - Travel App
 
-تطبيق سفر لتركيا يتكون من Backend (Django REST Framework) و Frontend (Flutter).
+تطبيق سياحي يتكون من Backend (Django REST Framework) و Frontend (Flutter).
 
 ## 🏗️ البنية
 
@@ -123,4 +123,3 @@ flutter run
 ## 📄 الترخيص
 
 هذا المشروع خاص.
-
